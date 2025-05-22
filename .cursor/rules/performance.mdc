@@ -1,0 +1,41 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# Performance Rules
+
+## Laravel Performance
+- Use Laravel's caching where appropriate
+- Optimize database queries
+- Use proper database indexing
+- Implement query caching
+- Use proper database relationships
+
+## Vue Performance
+- Use Vue's built-in performance features
+- Implement proper code splitting
+- Use lazy loading for components
+- Optimize component rendering
+- Use proper state management
+
+## Asset Optimization
+- Use proper asset bundling
+- Implement proper asset caching
+- Use proper image optimization
+- Implement proper CSS/JS minification
+- Use proper CDN configuration
+
+## API Performance
+- Implement proper API caching
+- Use proper API pagination
+- Optimize API responses
+- Use proper API rate limiting
+- Implement proper API monitoring
+
+## General Performance
+- Monitor application performance
+- Use proper logging
+- Implement proper error handling
+- Use proper debugging tools
+- Follow performance best practices

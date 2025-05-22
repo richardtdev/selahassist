@@ -1,0 +1,54 @@
+---
+description: 
+globs: *.vue,resources/js/**/*.vue,resources/js/Pages/**/*.vue,resources/js/Components/**/*.vue,resources/js/Layouts/**/*.vue
+alwaysApply: false
+---
+# Vue/Inertia Code Style Rules
+
+## TypeScript Migration
+- All new Vue files should use `<script setup lang="ts">`
+- When modifying existing JavaScript files, confirm before migrating to TypeScript
+- Use proper TypeScript interfaces for component props
+- Add gradual typing to existing JavaScript components
+- Use `PropType` from Vue to type complex props
+
+## General
+- Use Vue 3 Composition API with `<script setup>` syntax
+- Each component should have a single responsibility
+- Keep components small and focused (< 200 lines)
+- Extract reusable logic into composables
+- Avoid using jQuery or direct DOM manipulation
+- Use Inertia.js for page transitions and data passing
+
+## Naming
+- Component files: PascalCase (e.g., `UserCard.vue`)
+- Component names: PascalCase (e.g., `UserCard`)
+- Component props: camelCase (e.g., `userData`)
+- Component events: kebab-case (e.g., `@update-user`)
+- CSS classes: kebab-case (e.g., `user-card`)
+
+## Template Structure
+- Use self-closing tags for void elements
+- Always use shorthand directives (`:` instead of `v-bind:`)
+- Always use shorthand event handlers (`@` instead of `v-on:`)
+- Limit template expressions to simple operations
+- Extract complex logic to computed properties or methods
+
+## Inertia.js Practices
+- Use Inertia Links for navigation
+- Use Inertia Forms for forms
+- Use Inertia's shared data for common data
+- Use partial reloads when appropriate
+- Keep page component payloads minimal
+
+## Component Structure
+- Order: `<script>`, `<template>`, `<style>`
+- Import order: Vue, external libraries, components, composables
+- Script setup structure:
+  1. Props/Emits definitions
+  2. Import statements
+  3. Refs and reactive state
+  4. Computed properties
+  5. Watch statements
+  6. Lifecycle hooks
+  7. Methods

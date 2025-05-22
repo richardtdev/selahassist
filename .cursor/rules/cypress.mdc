@@ -1,0 +1,51 @@
+---
+description: 
+globs: cypress/e2e/**/*.cy.ts,cypress/integration/**/*.spec.ts,cypress/support/**/*.ts
+alwaysApply: false
+---
+# Cypress Testing Rules
+
+## General Testing Principles
+- Test complete user flows and journeys
+- Focus on testing from the user's perspective
+- Write tests that are resilient to UI changes
+- Use descriptive test names that explain the user scenario
+- Follow the Given, When, Then pattern
+
+## Test Structure
+- Group related tests in describe blocks
+- Use context blocks for different scenarios
+- Use it blocks for individual test cases
+- Keep tests independent from each other
+- Use before/beforeEach hooks for common setup
+
+## Selectors Strategy
+- Never use CSS selectors that are tied to styling
+- Prefer data-cy attributes for selecting elements
+- Use data-testid as an alternative when data-cy is not available
+- Use semantic selectors when appropriate (button, h1, etc.)
+- Use cy.contains() for text content when appropriate
+
+## Page Objects and Commands
+- Create page objects for common UI sections
+- Create custom Cypress commands for repetitive actions
+- Keep page objects focused on a specific page or component
+- Organize commands by feature or functionality
+- Export selectors from page objects for reuse
+
+## Test Data Management
+- Use fixtures for static test data
+- Use factories for dynamic test data
+- Use cy.intercept() to mock API responses
+- Reset application state between tests
+- Clean up created data after tests
+
+## Best Practices
+- Use cy.wait() sparingly; prefer waiting for specific events
+- Test for both success and failure scenarios
+- Take screenshots on test failures
+- Record videos of test runs
+- Use retry-ability features of Cypress when needed
+- Run tests in CI/CD pipeline
+- Optimize test execution time
+- Use Cypress dashboard for test analytics

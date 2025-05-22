@@ -1,0 +1,75 @@
+---
+description: 
+globs: resources/js/Components/**/*.vue,resources/js/Pages/**/*.vue,resources/js/Layouts/**/*.vue
+alwaysApply: false
+---
+# Cypress Vue Testing Attribute Rules
+
+## Component Attribute Guidelines
+- Add `data-cy` attributes to all interactive elements
+- Structure data-cy attributes using `[component]-[element-type]-[purpose]` format
+- Avoid using class names or IDs for selectors
+- Add data-cy attributes to dynamically generated elements
+- Use ARIA attributes for both accessibility and testing
+
+## Form Elements
+- Add data-cy to all form inputs, labels, and submit buttons
+- Use consistent naming format: `data-cy="login-form-email-input"`
+- Add data-cy to form error messages: `data-cy="login-form-email-error"`
+- Add data-cy to form submission buttons: `data-cy="login-form-submit-button"`
+- Add data-cy to success/error messages: `data-cy="login-form-success-message"`
+
+## Interactive Elements
+- Add data-cy to all buttons: `data-cy="user-profile-edit-button"`
+- Add data-cy to all links: `data-cy="navigation-home-link"`
+- Add data-cy to all dropdowns: `data-cy="filter-status-dropdown"`
+- Add data-cy to all modals: `data-cy="delete-confirmation-modal"`
+- Add data-cy to all tabs: `data-cy="user-settings-profile-tab"`
+
+## Data Display Elements
+- Add data-cy to important text elements: `data-cy="user-profile-username"`
+- Add data-cy to dynamic content containers: `data-cy="product-list-container"`
+- Add data-cy to loading indicators: `data-cy="product-list-loading"`
+- Add data-cy to empty state indicators: `data-cy="product-list-empty"`
+- Add data-cy to pagination controls: `data-cy="product-list-pagination"`
+
+## State Indicators
+- Add data-cy to success states: `data-cy="payment-success-message"`
+- Add data-cy to error states: `data-cy="payment-error-message"`
+- Add data-cy to loading states: `data-cy="payment-loading-indicator"`
+- Add data-cy to disabled elements: `data-cy="submit-button-disabled"`
+- Add data-cy to active/selected states: `data-cy="navigation-home-link-active"`
+
+## Implementation Examples
+
+```vue
+<!-- Good Example -->
+<template>
+  <form data-cy="login-form" @submit.prevent="submitForm">
+    <div>
+      <label for="email" data-cy="login-form-email-label">Email</label>
+      <input 
+        id="email" 
+        v-model="form.email" 
+        type="email" 
+        data-cy="login-form-email-input"
+      />
+      <span v-if="errors.email" data-cy="login-form-email-error">
+        {{ errors.email }}
+      </span>
+    </div>
+    
+    <button 
+      type="submit" 
+      data-cy="login-form-submit-button"
+      :disabled="loading"
+    >
+      {{ loading ? 'Loading...' : 'Log In' }}
+    </button>
+    
+    <div v-if="success" data-cy="login-form-success-message">
+      Login successful!
+    </div>
+  </form>
+</template>
+```

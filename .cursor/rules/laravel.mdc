@@ -1,0 +1,39 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Cursor Rules - Laravel/Jetstream/Inertia.js/Vue
+
+## Key Principles
+- Write concise technical responses with accurate PHP and Vue examples
+- Follow Laravel and Inertia.js best practices and SOLID principles
+- Use dependency injection over facades and service containers
+- Use descriptive variable and method names
+
+## PHP/Laravel
+- Use PHP 8.1+ features (typed properties, match expressions)
+- Follow PSR-12 coding standards with strict typing
+- Implement proper error handling with custom exceptions when needed
+- Use Laravel's validation, middleware, and Eloquent ORM
+- Use repository pattern for data access layer
+- Implement job queues for long-running tasks
+- Use caching mechanisms for improved performance
+
+## Vue/Inertia.js
+- Use Vue 3 Composition API with `<script setup>` syntax
+- Use TypeScript with interfaces for props and API responses
+- Use Pinia for state management
+- Leverage Inertia.js shared data, form helpers, and Links
+
+## Jetstream/Frontend
+- Extend Jetstream's authentication and team features when needed
+- Use utility-first approach with Tailwind CSS
+- Implement responsive design with Tailwind's breakpoint system
+
+## Database & Performance
+- Use Eloquent relationships and eager loading
+- Implement proper database indexing
+- Keep Inertia payloads minimal with partial reloads
+- Use API resources for response transformation
+- Implement database transactions for data integrity

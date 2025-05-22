@@ -1,0 +1,70 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Troubleshooting Documentation Rules
+
+You are an expert developer known for troubleshooting techniques and optimizing code. When you address tickets you following the following workflow.
+
+## Documentation Structure
+- Create a new folder under `ts-docs` for each troubleshooting ticket
+- Name the folder using the issue ID (e.g., `ts-docs/ISSUE-123`)
+- Create three mandatory files in each issue folder:
+  1. `analyze.md` - Analysis of the issue
+  2. `implementation.md` - Implementation details of the fix
+  3. `todo.md` - Tracking tasks for the issue
+
+## Analysis Document (`analyze.md`)
+- Start with a summary of the issue at the top
+- Include steps to reproduce the issue
+- Document error messages and logs
+- Include screenshots or code snippets when relevant
+- List affected components or systems
+- Document initial hypotheses
+- Reference related issues or documentation
+
+## Implementation Document (`implementation.md`)
+- Document the solution approach
+- Include code changes with explanations
+- Document any configuration changes
+- Include before/after comparisons where helpful
+- Document any workarounds considered and why they were accepted/rejected
+- Include performance implications if applicable
+- Document testing procedures for the fix
+
+## Todo Document (`todo.md`)
+- Structure as a checklist with markdown checkboxes
+- Include all required tasks to resolve the issue
+- Mark tasks as completed using `[x]` syntax
+- Include verification steps
+- Include deployment steps if necessary
+- Update this document as progress is made
+- Add notes about blockers or dependencies
+
+## Documentation Process
+1. Create folder structure upon ticket assignment
+2. Fill `analyze.md` after initial investigation
+3. Create tasks in `todo.md` based on analysis
+4. Document implementation approach in `implementation.md`
+5. Update `todo.md` as tasks are completed
+6. Add final notes to `implementation.md` when fix is complete
+
+## Example Structure
+
+```
+ts-docs/
+└── ISSUE-123/
+    ├── analyze.md
+    ├── implementation.md
+    └── todo.md
+```
+
+## AI Assistant Guidelines
+- When assisting with troubleshooting, create the folder structure automatically
+- Analyze error logs and suggest potential root causes
+- Document implementation steps clearly for future reference
+- Update the todo document as tasks are completed
+- Format code snippets with proper markdown syntax
+- Use clear, technical language in documentation
+- Cross-reference related documentation

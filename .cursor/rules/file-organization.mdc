@@ -1,0 +1,50 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# File Organization Rules
+
+## Frontend Structure
+- Vue components go in `resources/js/Components`
+- Vue layouts go in `resources/js/Layouts`
+- Inertia pages go in `resources/js/Pages`
+- TypeScript types go in `resources/js/types`
+- Utility functions go in `resources/js/utils`
+- Entry point is `resources/js/app.ts`
+- Type definitions in `resources/js/shims-vue.d.ts`
+- Composables go in `resources/js/composables` (if applicable)
+- Stores go in `resources/js/stores` (if applicable)
+
+## Backend Structure
+- Laravel models go in `app/Models`
+- Controllers go in `app/Http/Controllers`
+- Middleware go in `app/Http/Middleware`
+- Requests go in `app/Http/Requests`
+- Routes go in `routes` directory
+- Migrations go in `database/migrations`
+- Seeders go in `database/seeders`
+- Factories go in `database/factories`
+- Jetstream/Fortify actions go in `app/Actions`
+- Service classes go in `app/Services`
+- Event classes go in `app/Events`
+- Policy classes go in `app/Policies`
+- Provider classes go in `app/Providers`
+
+## Testing Structure
+- Feature tests go in `tests/Feature`
+- Unit tests go in `tests/Unit`
+- Vue component tests go in `resources/js/__tests__` (if applicable)
+
+## Configuration Files
+- Environment configuration in `.env` files
+- Application configuration in `config` directory
+- Frontend build configuration in `vite.config.ts`
+- TypeScript configuration in `tsconfig.json`
+- Tailwind configuration in `tailwind.config.js`
+- PostCSS configuration in `postcss.config.js`
+
+## Documentation
+- Project documentation in `docs` directory
+- Troubshooting documentation in `ts-docs` directory
+- Updated content in `updates` directory

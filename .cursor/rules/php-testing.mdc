@@ -1,0 +1,48 @@
+---
+description: 
+globs: tests/**/*.php,tests/Feature/**/*.php,tests/Unit/**/*.php
+alwaysApply: false
+---
+# PHP Testing Rules
+
+## General Testing Principles
+- Write tests for all new features and bug fixes
+- Maintain a high test coverage (aim for 80%+)
+- Tests should be independent and idempotent
+- Use descriptive test method names that explain the behavior being tested
+- Follow AAA pattern: Arrange, Act, Assert
+
+## Unit Tests
+- Place in `tests/Unit` directory
+- Test individual classes in isolation
+- Mock dependencies using PHPUnit mocks or Mockery
+- Focus on testing business logic, not framework code
+- Keep unit tests fast (< 100ms per test)
+
+## Feature Tests
+- Place in `tests/Feature` directory
+- Test entire feature workflows
+- Use Laravel's testing helpers (actingAs, get, post, etc.)
+- Test happy paths and edge cases
+- Test authorization rules and policies
+
+## Database Testing
+- Use in-memory SQLite database for tests when possible
+- Use database transactions to isolate tests
+- Create factories for all models
+- Use model factories to create test data
+- Seed only the data necessary for tests
+
+## API Testing
+- Test all API endpoints
+- Verify response status codes
+- Validate response structure and content
+- Test authentication and authorization rules
+- Test rate limiting if applicable
+
+## Best Practices
+- Use RefreshDatabase or DatabaseTransactions traits
+- Prefer factories over direct model creation
+- Use data providers for testing multiple scenarios
+- Use setUp and tearDown methods for common test setup
+- Write assertions that clearly express intent

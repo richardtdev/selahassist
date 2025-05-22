@@ -1,0 +1,51 @@
+---
+description: 
+globs: *.ts,resources/js/**/*.ts,resources/js/types/**/*.ts,resources/js/composables/**/*.ts,resources/js/utils/**/*.ts
+alwaysApply: false
+---
+# TypeScript Code Style Rules
+
+## TypeScript Migration
+- Progressive migration approach - don't force immediate migration of all files
+- Migrate files on a case-by-case basis as they're modified
+- When touching an existing JS file, consider converting to TS
+- Prompt team members before converting large JS files to TS
+- Ensure proper type definitions in migrated files
+
+## General
+- Use TypeScript for all frontend code
+- Prefer interfaces over types for object definitions
+- Explicitly define return types for functions
+- Use TypeScript's strictest settings in tsconfig.json
+- Avoid `any` type; use more specific types
+- Use readonly for immutable properties
+
+## Naming
+- Interfaces: PascalCase with 'I' prefix (e.g., `IUserData`)
+- Types: PascalCase (e.g., `UserRole`)
+- Variables/functions: camelCase (e.g., `getUserData`)
+- Constants: UPPER_SNAKE_CASE (e.g., `MAX_USERS`)
+- Enums: PascalCase (e.g., `UserRole`)
+
+## Formatting
+- Indent using 2 spaces, not tabs
+- Line length should not exceed 100 characters
+- Use semicolons after statements
+- Use double quotes for strings
+- Use trailing commas in multi-line object/array literals
+
+## Best Practices
+- Use ES6+ features appropriately (destructuring, spread, etc.)
+- Prefer `const` over `let`, avoid `var`
+- Use async/await over direct Promises for asynchronous code
+- Use optional chaining and nullish coalescing operators
+- Keep functions pure when possible
+- Use generics appropriately, but avoid overcomplication
+
+## Type Definitions
+- Define types for API responses
+- Define prop types for Vue components
+- Use union types for variables with multiple possible types
+- Define strong types for complex objects
+- Export/import types across files as needed
+- Use utility types like Partial<T>, Pick<T>, Omit<T>

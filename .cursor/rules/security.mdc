@@ -1,0 +1,41 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Security Rules
+
+## Environment Variables
+- Never commit `.env` files
+- Use `.env.example` for documentation
+- Keep sensitive data in environment variables
+- Use proper environment variable naming
+- Document all required environment variables
+
+## Authentication & Authorization
+- Use Laravel's built-in authentication
+- Implement proper role-based access control
+- Use middleware for route protection
+- Validate user permissions
+- Use proper session management
+
+## Data Security
+- Sanitize all user input
+- Use proper validation rules
+- Implement CSRF protection
+- Use proper database security
+- Encrypt sensitive data
+
+## API Security
+- Use proper API authentication
+- Implement rate limiting
+- Use proper API versioning
+- Validate API requests
+- Use proper API error handling
+
+## General Security
+- Keep dependencies up to date
+- Use secure communication (HTTPS)
+- Implement proper logging
+- Use proper error handling
+- Follow security best practices

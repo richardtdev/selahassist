@@ -1,0 +1,41 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# Git Rules
+
+## Commit Messages
+- Use meaningful commit messages
+- Follow conventional commits format
+- Reference issue numbers when applicable
+- Keep commits focused and atomic
+- Use proper commit message formatting
+
+## Branching Strategy
+- Follow Git flow branching strategy
+- Use feature branches for new features
+- Use bugfix branches for bug fixes
+- Use release branches for releases
+- Use hotfix branches for hotfixes
+
+## Code Review
+- Review code before merging
+- Use pull requests for code review
+- Follow code review checklist
+- Address review comments
+- Keep pull requests focused
+
+## Version Control
+- Use proper versioning
+- Tag releases properly
+- Keep version history clean
+- Use proper merge strategies
+- Follow version control best practices
+
+## General Git
+- Keep repository clean
+- Use proper .gitignore
+- Use proper .gitattributes
+- Use proper Git hooks
+

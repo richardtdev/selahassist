@@ -1,0 +1,42 @@
+---
+description: 
+globs: *.php,app/**/*.php,config/**/*.php,database/**/*.php,routes/**/*.php,tests/**/*.php
+alwaysApply: false
+---
+# PHP Code Style Rules
+
+## General
+- Follow PSR-12 coding standards
+- Use strict typing: `declare(strict_types=1);`
+- Use type hints and return types for all methods
+- Avoid commented-out code in production
+- Keep methods small and focused (< 20 lines preferred)
+- Avoid deeply nested conditionals (max 3 levels)
+
+## Naming
+- Classes: PascalCase (e.g., `UserController`)
+- Methods/functions: camelCase (e.g., `getUserData()`)
+- Variables: camelCase (e.g., `$userData`)
+- Constants: UPPER_SNAKE_CASE (e.g., `APP_ENV`)
+- Use descriptive names that reveal intent
+
+## Formatting
+- Indent using 4 spaces, not tabs
+- Use a single space around operators
+- No trailing whitespace
+- Line length should not exceed 120 characters
+- Use blank lines to separate logical blocks of code
+
+## Comments
+- Use DocBlocks for classes and methods
+- Comment complex logic but prefer self-explanatory code
+- Use PHPDoc annotations for property and method documentation
+
+## Laravel Specifics
+- Follow Laravel naming conventions for controllers, models, etc.
+- Use Laravel's helper functions appropriately
+- Group related routes in RouteServiceProvider
+- Use dependency injection in controllers rather than facades
+- Prefer named routes over hardcoded URLs
+- Use resource controllers when appropriate
+- Create form requests for complex validation

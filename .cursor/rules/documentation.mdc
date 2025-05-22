@@ -1,0 +1,41 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Documentation Rules
+
+## Code Documentation
+- Document all public methods and classes
+- Use proper PHPDoc comments
+- Document complex business logic
+- Use TypeScript types for better documentation
+- Keep documentation up to date
+
+## API Documentation
+- Document all API endpoints
+- Use proper API documentation tools
+- Document request/response formats
+- Document authentication requirements
+- Keep API documentation up to date
+
+## Project Documentation
+- Keep README.md up to date
+- Document project setup
+- Document deployment process
+- Document development workflow
+- Document project architecture
+
+## Component Documentation
+- Document component props and emits
+- Document component usage
+- Document component examples
+- Document component styling
+- Keep component documentation up to date
+
+## General Documentation
+- Use proper documentation tools
+- Keep documentation organized
+- Use proper documentation format
+- Document all important decisions
+- Follow documentation best practices
