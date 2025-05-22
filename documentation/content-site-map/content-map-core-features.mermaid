@@ -1,0 +1,34 @@
+graph TD
+    Dashboard[Pastor Dashboard] --> Dash1[Overview]
+    Dashboard --> Dash2[News Integration]
+    Dashboard --> Dash3[Sermon Organization]
+    Dash1 --> Dash1a[Recent Sermons]
+    Dash1 --> Dash1b[Sermon Drafts]
+    Dash2 --> Dash2a[Daily News Summaries]
+    Dash2 --> Dash2b[Scripture Connections]
+
+    Workspace[Sermon Creation Workspace] --> Work1[Rich Text Editor]
+    Workspace --> Work2[AI-Assisted Creation]
+    Workspace --> Work3[Bible Integration]
+    Workspace --> Work4[Templates]
+    Work1 --> Work1a[Formatting Tools]
+    Work1 --> Work1b[Auto-save]
+    Work2 --> Work2a[Sermon Outline Generation]
+    Work2 --> Work2b[Theological Research]
+    Work3 --> Work3a[Multi-translation Verses]
+    Work4 --> Work4a[System Templates]
+    Work4 --> Work4b[Custom Templates]
+
+    Events[Current Events Integration] --> Event1[News Summaries]
+    Events --> Event2[Topic Filtering]
+    Events --> Event3[Resource Management]
+    Event1 --> Event1a[100-200 Word Summaries]
+    Event1 --> Event1b[2-3 Key Themes]
+    Event1 --> Event1c[Scripture Connections]
+
+    classDef mvp fill:#d4f1f9,stroke:#0b5394,stroke-width:2px
+    
+    %% MVP Features
+    class Dashboard,Dash1,Dash2,Dash3,Dash1a,Dash1b,Dash2a,Dash2b mvp
+    class Workspace,Work1,Work2,Work3,Work4,Work1a,Work1b,Work2a,Work3a,Work4a,Work4b mvp
+    class Events,Event1,Event2,Event1a,Event1b,Event1c mvp

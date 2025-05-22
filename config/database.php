@@ -92,8 +92,9 @@ return [
             'password' => env('DB_PASSWORD', ''),
             'charset' => env('DB_CHARSET', 'utf8'),
             'prefix' => '',
+            'schema' => env('DB_SCHEMA', 'public'),
+            'search_path' => env('DB_SCHEMA', 'public'),
             'prefix_indexes' => true,
-            'search_path' => 'public',
             'sslmode' => 'prefer',
         ],
 

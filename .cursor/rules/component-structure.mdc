@@ -1,0 +1,60 @@
+---
+description: 
+globs: resources/js/Components/**/*.vue
+alwaysApply: false
+---
+# Component Structure Rules
+
+## Vue Component Structure
+- Each component should be in its own file
+- Use TypeScript interfaces for props and emits
+- Keep components focused and single-responsibility
+- Use Inertia.js for page transitions and data handling
+- Follow this basic structure:
+  ```vue
+  <script setup lang="ts">
+  import { defineProps, defineEmits } from 'vue'
+  
+  interface Props {
+    // Define props here
+  }
+  
+  interface Emits {
+    // Define emits here
+  }
+  
+  const props = defineProps<Props>()
+  const emit = defineEmits<Emits>()
+  </script>
+  
+  <template>
+    <!-- Component template -->
+  </template>
+  
+  <style scoped>
+  /* Component styles */
+  </style>
+  ```
+
+## Component Organization
+- Group related components in subdirectories
+- Use index files to export components
+- Keep component names descriptive and PascalCase
+- Use proper component naming conventions:
+  - Base components: `Base[Name]`
+  - Layout components: `[Name]Layout`
+  - Page components: `[Name]Page`
+
+## Component Communication
+- Use props for parent-to-child communication
+- Use emits for child-to-parent communication
+- Use provide/inject for deep component communication
+- Use Pinia for global state management
+- Avoid prop drilling
+
+## Component Testing
+- Write tests for all components
+- Test component props and emits
+- Test component interactions
+- Test component styling
+- Use Vue Test Utils for testing

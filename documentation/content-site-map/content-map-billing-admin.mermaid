@@ -1,0 +1,52 @@
+graph TD
+    Billing[Billing & Financial Management] --> Bill1[Billing Dashboard]
+    Billing --> Bill2[Account Management]
+    Billing --> Bill3[Billing Operations]
+    Billing --> Bill4[Financial Reporting]
+    Billing --> Bill5[Audit & Compliance]
+    
+    Bill1 --> Bill1a[MRR & Growth Metrics]
+    Bill1 --> Bill1b[Churn Analytics]
+    Bill1 --> Bill1c[Trial Conversion Tracking]
+    
+    Bill2 --> Bill2a[Team Account Search]
+    Bill2 --> Bill2b[Account Details]
+    Bill2 --> Bill2c[Payment History]
+    Bill2 --> Bill2d[Billing Contacts]
+    Bill2 --> Bill2e[Support Notes]
+    
+    Bill3 --> Bill3a[Process Refunds]
+    Bill3 --> Bill3b[Apply Credits]
+    Bill3 --> Bill3c[Apply Comp Periods]
+    Bill3 --> Bill3d[Extend Trials]
+    Bill3 --> Bill3e[Handle Failed Payments]
+    Bill3 --> Bill3f[Update Subscription Status]
+    
+    Bill4 --> Bill4a[Revenue Reports]
+    Bill4 --> Bill4b[Plan Distribution]
+    Bill4 --> Bill4c[Team Growth Reports]
+    Bill4 --> Bill4d[Export Financial Data]
+    Bill4 --> Bill4e[Tax & Compliance Reporting]
+    
+    Bill5 --> Bill5a[Activity Log]
+    Bill5 --> Bill5b[Admin Actions]
+    Bill5 --> Bill5c[Subscription Changes]
+    Bill5 --> Bill5d[Billing Events]
+
+    Settings[Settings & Administration] --> Set1[User Settings]
+    Settings --> Set2[Admin Panel]
+    Settings --> Set3[Privacy & Security]
+    Set2 --> Set2a[User Management]
+    Set2 --> Set2b[Team Management]
+    Set2 --> Set2c[Plan Administration]
+    Set3 --> Set3a[GDPR/CCPA Compliance]
+    Set3 --> Set3b[Data Export/Deletion]
+
+    classDef mvp fill:#d4f1f9,stroke:#0b5394,stroke-width:2px
+    classDef new fill:#d5e8d4,stroke:#82b366,stroke-width:2px
+    
+    %% MVP Features
+    class Settings,Set1,Set2,Set3,Set2a,Set2b,Set2c,Set3a,Set3b mvp
+    
+    %% New Features
+    class Billing,Bill1,Bill2,Bill3,Bill4,Bill5,Bill1a,Bill1b,Bill1c,Bill2a,Bill2b,Bill2c,Bill2d,Bill2e,Bill3a,Bill3b,Bill3c,Bill3d,Bill3e,Bill3f,Bill4a,Bill4b,Bill4c,Bill4d,Bill4e,Bill5a,Bill5b,Bill5c,Bill5d new

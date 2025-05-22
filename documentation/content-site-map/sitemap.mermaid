@@ -1,0 +1,259 @@
+graph TD
+    %% Define user roles
+    subgraph Roles
+        Pastor[Pastor Role]
+        Admin[Admin Role]
+        TeamOwner[Team Owner]
+        TeamAdmin[Team Admin]
+        TeamMember[Team Member]
+        Guest[Unauthenticated User]
+    end
+
+    %% Public Pages (Accessible to All)
+    subgraph PublicPages[Public Pages]
+        Home[Landing Page]
+        About[About SermonAssist]
+        Pricing[Pricing Plans]
+        Contact[Contact Us]
+        Login[Login Page]
+        Register[Registration Page]
+        PasswordReset[Password Reset]
+        PrivacyPolicy[Privacy Policy]
+        TermsService[Terms of Service]
+    end
+
+    %% Team Management Pages
+    subgraph TeamPages[Team Management]
+        TeamCreate[Create Team]
+        TeamDashboard[Team Dashboard]
+        TeamSettings[Team Settings]
+        TeamMembers[Manage Team Members]
+        TeamInvite[Invite Team Member]
+        TeamRoles[Manage Member Roles]
+        TeamSwitch[Switch Active Team]
+    end
+
+    %% Pastor Pages
+    subgraph PastorPages[Pastor Pages]
+        PastorDash[Pastor Dashboard]
+        SermonList[Team Sermons]
+        SermonCreate[Create New Sermon]
+        SermonEdit[Edit Sermon]
+        SermonView[View Sermon]
+        NewsSummaries[Daily News Summaries]
+        NewsExplore[Explore News by Topic]
+        BibleSearch[Bible Verse Search]
+        TemplateList[Sermon Templates]
+        TemplateCreate[Create Custom Template]
+        ProfileSettings[Profile Settings]
+        SubscriptionDetails[Team Subscription]
+        PrivacySettings[Privacy & Data Settings]
+    end
+
+    %% Admin Pages
+    subgraph AdminPages[Admin Pages]
+        AdminDash[Admin Dashboard]
+        
+        %% User & Team Management
+        UserManagement[User Management]
+        UserList[All Users]
+        UserCreate[Create User]
+        UserEdit[Edit User]
+        TeamManagement[Team Management]
+        TeamList[All Teams]
+        
+        %% Plan Management
+        PlanManagement[Plan Management]
+        PlanList[All Plans]
+        PlanCreate[Create Plan]
+        PlanEdit[Edit Plan]
+        
+        %% System Management
+        SystemStats[System Statistics]
+        NewsSourceManagement[News Source Management]
+        TemplateManagement[System Template Management]
+    end
+
+    %% Billing & Financial Management
+    subgraph BillingPages[Billing & Financial Management]
+        %% Dashboard & Overview
+        BillingDashboard[Billing Dashboard]
+        MRRMetrics[MRR & Growth Metrics]
+        ChurnMetrics[Churn Analytics]
+        TrialConversions[Trial Conversion Tracking]
+        
+        %% Team Account Management
+        AccountManagement[Account Management]
+        TeamAccountSearch[Search Team Accounts]
+        TeamAccountDetails[Team Account Details]
+        PaymentHistory[Payment History]
+        BillingContacts[Billing Contacts]
+        SupportNotes[Support History Notes]
+        
+        %% Billing Operations
+        BillingOperations[Billing Operations]
+        ProcessRefund[Process Refund]
+        ApplyCredit[Apply Account Credit]
+        ApplyComp[Apply Complementary Period]
+        ExtendTrial[Extend Trial Period]
+        FailedPayments[Handle Failed Payments]
+        UpdateSubscription[Update Subscription Status]
+        
+        %% Financial Reporting
+        FinancialReporting[Financial Reporting]
+        RevenueReports[Revenue Reports]
+        PlanDistribution[Plan Distribution]
+        TeamGrowth[Team Growth Reports]
+        ExportFinancials[Export Financial Data]
+        TaxReporting[Tax & Compliance Reporting]
+        
+        %% Audit & Compliance
+        BillingAudit[Audit & Compliance]
+        ActivityLog[Activity Log]
+        AdminActions[Admin Action History]
+        SubscriptionChanges[Subscription Change History]
+        BillingEvents[Billing Event Monitoring]
+    end
+
+    %% Post-MVP Pages (Shown in different color)
+    subgraph PostMVPPages[Post-MVP Features]
+        AIChat[AI Chat Interface]
+        ResourceLibrary[Resource Library]
+        SmallGroupMaterials[Small Group Materials]
+        ExportOptions[Advanced Export Options]
+        CollaborativeEditing[Collaborative Editing]
+        Analytics[Sermon Analytics]
+        AdvancedNewsFilters[Advanced News Filters]
+    end
+
+    %% Connect user roles to their accessible pages
+    Guest --> PublicPages
+    
+    %% Team role access
+    TeamOwner --> PublicPages
+    TeamOwner --> PastorPages
+    TeamOwner --> TeamPages
+    TeamOwner --> PostMVPPages
+    
+    TeamAdmin --> PublicPages
+    TeamAdmin --> PastorPages
+    TeamAdmin --> TeamPages
+    TeamAdmin -.-> |Limited access| TeamSettings
+    TeamAdmin --> PostMVPPages
+    
+    TeamMember --> PublicPages
+    TeamMember --> PastorPages
+    TeamMember -.-> |View only| TeamMembers
+    TeamMember --> PostMVPPages
+    
+    %% Original roles (now System roles)
+    Pastor --> PublicPages
+    Pastor --> PastorPages
+    Pastor -.-> |Personal team only| TeamPages
+    Pastor --> PostMVPPages
+    
+    Admin --> PublicPages
+    Admin --> PastorPages
+    Admin --> AdminPages
+    Admin --> TeamPages
+    Admin --> BillingPages
+    Admin --> PostMVPPages
+
+    %% Define navigation hierarchy for Team Management
+    TeamCreate --> TeamDashboard
+    TeamDashboard --> TeamSettings
+    TeamSettings --> TeamMembers
+    TeamMembers --> TeamInvite
+    TeamMembers --> TeamRoles
+    TeamDashboard --> TeamSwitch
+
+    %% Define navigation hierarchy for Pastor
+    PastorDash --> SermonList
+    PastorDash --> NewsSummaries
+    PastorDash --> BibleSearch
+    PastorDash --> TemplateList
+    SermonList --> SermonCreate
+    SermonList --> SermonEdit
+    SermonList --> SermonView
+    SermonCreate --> BibleSearch
+    SermonCreate --> TemplateList
+    TemplateList --> TemplateCreate
+    NewsSummaries --> NewsExplore
+
+    %% Define navigation hierarchy for Admin
+    AdminDash --> UserManagement
+    AdminDash --> TeamManagement
+    AdminDash --> PlanManagement
+    AdminDash --> SystemStats
+    AdminDash --> NewsSourceManagement
+    AdminDash --> TemplateManagement
+    AdminDash --> BillingDashboard
+    
+    UserManagement --> UserList
+    UserList --> UserCreate
+    UserList --> UserEdit
+    TeamManagement --> TeamList
+    PlanManagement --> PlanList
+    PlanList --> PlanCreate
+    PlanList --> PlanEdit
+
+    %% Define navigation hierarchy for Billing
+    BillingDashboard --> MRRMetrics
+    BillingDashboard --> ChurnMetrics
+    BillingDashboard --> TrialConversions
+    BillingDashboard --> AccountManagement
+    BillingDashboard --> BillingOperations
+    BillingDashboard --> FinancialReporting
+    BillingDashboard --> BillingAudit
+    
+    AccountManagement --> TeamAccountSearch
+    TeamAccountSearch --> TeamAccountDetails
+    TeamAccountDetails --> PaymentHistory
+    TeamAccountDetails --> BillingContacts
+    TeamAccountDetails --> SupportNotes
+    TeamAccountDetails --> BillingOperations
+    
+    BillingOperations --> ProcessRefund
+    BillingOperations --> ApplyCredit
+    BillingOperations --> ApplyComp
+    BillingOperations --> ExtendTrial
+    BillingOperations --> FailedPayments
+    BillingOperations --> UpdateSubscription
+    
+    FinancialReporting --> RevenueReports
+    FinancialReporting --> PlanDistribution
+    FinancialReporting --> TeamGrowth
+    FinancialReporting --> ExportFinancials
+    FinancialReporting --> TaxReporting
+    
+    BillingAudit --> ActivityLog
+    BillingAudit --> AdminActions
+    BillingAudit --> SubscriptionChanges
+    BillingAudit --> BillingEvents
+
+    %% Connect to PostMVP features
+    PastorDash --> AIChat
+    PastorDash --> ResourceLibrary
+    SermonCreate --> CollaborativeEditing
+    SermonList --> Analytics
+    ResourceLibrary --> SmallGroupMaterials
+    SermonView --> ExportOptions
+    NewsSummaries --> AdvancedNewsFilters
+
+    %% Style definitions
+    classDef publicPage fill:#e3f2fd,stroke:#2196f3,stroke-width:1px
+    classDef teamPage fill:#e1f5fe,stroke:#03a9f4,stroke-width:1px
+    classDef pastorPage fill:#e8f5e9,stroke:#4caf50,stroke-width:1px
+    classDef adminPage fill:#f3e5f5,stroke:#9c27b0,stroke-width:1px
+    classDef billingPage fill:#f8bbd0,stroke:#e91e63,stroke-width:1px
+    classDef postMVP fill:#fff3e0,stroke:#ff9800,stroke-width:1px
+    classDef roleNode fill:#f5f5f5,stroke:#616161,stroke-width:2px
+
+    %% Apply styles
+    class Home,About,Pricing,Contact,Login,Register,PasswordReset,PrivacyPolicy,TermsService publicPage
+    class TeamCreate,TeamDashboard,TeamSettings,TeamMembers,TeamInvite,TeamRoles,TeamSwitch teamPage
+    class PastorDash,SermonList,SermonCreate,SermonEdit,SermonView,NewsSummaries,NewsExplore,BibleSearch,TemplateList,TemplateCreate,ProfileSettings,SubscriptionDetails,PrivacySettings pastorPage
+    class AdminDash,UserManagement,UserList,UserCreate,UserEdit,TeamManagement,TeamList,PlanManagement,PlanList,PlanCreate,PlanEdit,SystemStats,NewsSourceManagement,TemplateManagement adminPage
+    class BillingDashboard,MRRMetrics,ChurnMetrics,TrialConversions,AccountManagement,TeamAccountSearch,TeamAccountDetails,PaymentHistory,BillingContacts,SupportNotes,BillingOperations,ProcessRefund,ApplyCredit,ApplyComp,ExtendTrial,FailedPayments,UpdateSubscription,FinancialReporting,RevenueReports,PlanDistribution,TeamGrowth,ExportFinancials,TaxReporting,BillingAudit,ActivityLog,AdminActions,SubscriptionChanges,BillingEvents billingPage
+    class AIChat,ResourceLibrary,SmallGroupMaterials,ExportOptions,CollaborativeEditing,Analytics,AdvancedNewsFilters postMVP
+    class Pastor,Admin,TeamOwner,TeamAdmin,TeamMember,Guest roleNode

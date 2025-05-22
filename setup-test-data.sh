@@ -50,23 +50,6 @@ else
   exit 1
 fi
 
-# Check if SchemaServiceProvider exists
-if [ ! -f "app/Providers/SchemaServiceProvider.php" ]; then
-  echo -e "${RED}Error: SchemaServiceProvider not found.${NC}"
-  echo -e "${YELLOW}Please run setup-sermonassist.sh first to set up the SchemaServiceProvider.${NC}"
-  exit 1
-else
-  echo -e "${GREEN}SchemaServiceProvider found.${NC}"
-fi
-
-# Check if the provider is registered in config/app.php
-if ! grep -q "App\\\\Providers\\\\SchemaServiceProvider::class" config/app.php; then
-  echo -e "${RED}Error: SchemaServiceProvider not registered in config/app.php.${NC}"
-  echo -e "${YELLOW}Please run setup-sermonassist.sh first to register the SchemaServiceProvider.${NC}"
-  exit 1
-else
-  echo -e "${GREEN}SchemaServiceProvider is registered in config/app.php.${NC}"
-fi
 
 # Check if models exist
 if [ ! -f "app/Models/Plan.php" ] || [ ! -f "app/Models/SermonTemplate.php" ] || [ ! -f "app/Models/Sermon.php" ]; then

@@ -1,0 +1,26 @@
+graph TD
+    SermonAssist[SermonAssist SaaS Platform] --> Auth[User Management & Authentication]
+    SermonAssist --> TeamMgmt[Team Management]
+    SermonAssist --> SubMgmt[Subscription Management]
+    SermonAssist --> Dashboard[Pastor Dashboard]
+    SermonAssist --> Workspace[Sermon Creation Workspace]
+    SermonAssist --> Events[Current Events Integration]
+    SermonAssist --> Resources[Resource Library]
+    SermonAssist --> Chat[AI Chat Interface]
+    SermonAssist --> Settings[Settings & Administration]
+    SermonAssist --> Billing[Billing & Financial Management]
+    SermonAssist --> Integrations[External Integrations]
+    SermonAssist --> Backend[Backend Infrastructure]
+
+    classDef mvp fill:#d4f1f9,stroke:#0b5394,stroke-width:2px
+    classDef postMVP fill:#ffe6cc,stroke:#bf9000,stroke-width:2px
+    classDef new fill:#d5e8d4,stroke:#82b366,stroke-width:2px
+    
+    %% MVP Features
+    class Auth,TeamMgmt,SubMgmt,Dashboard,Workspace,Events,Settings,Integrations,Backend mvp
+    
+    %% New Features
+    class Billing new
+    
+    %% Post-MVP Features
+    class Resources,Chat postMVP

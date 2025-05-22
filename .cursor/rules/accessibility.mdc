@@ -1,0 +1,180 @@
+---
+description: 
+globs: resources/js/Components/**/*.vue,resources/js/Pages/**/*.vue,resources/js/Layouts/**/*.vue
+alwaysApply: false
+---
+# Accessibility Rules for UI
+
+## General Principles
+- Target WCAG 2.1 AA compliance as a minimum standard
+- Test with screen readers (NVDA, VoiceOver)
+- Ensure keyboard navigability for all interactive elements
+- Support both mouse and touch interfaces
+- Maintain sufficient color contrast ratios (4.5:1 for normal text)
+- Support browser zoom up to 200%
+
+## Semantic HTML
+- Use proper HTML elements for their intended purpose
+- Use heading levels (h1-h6) in hierarchical order
+- Use landmark elements (header, nav, main, footer)
+- Use lists (ul, ol, dl) for listing content
+- Use tables for tabular data with proper headers
+- Use buttons for actions and links for navigation
+
+## ARIA Implementation
+- Use ARIA attributes only when HTML semantics are insufficient
+- Add `aria-label` to elements without visible text
+- Use `aria-labelledby` to associate elements with their labels
+- Use `aria-describedby` for additional descriptions
+- Use `aria-expanded` for expandable elements
+- Use `aria-hidden="true"` for decorative elements
+- Add `role` attributes when necessary to clarify purpose
+
+## Forms and Inputs
+- Associate labels with form controls using `for` and `id`
+- Use `fieldset` and `legend` to group related controls
+- Provide clear error messages with `aria-describedby`
+- Mark required fields with `aria-required="true"`
+- Use `autocomplete` attributes appropriately
+- Ensure focus styles are clearly visible
+
+## Focus Management
+- Preserve natural tab order when possible
+- Use `tabindex="0"` to add elements to tab order
+- Avoid using `tabindex` values greater than 0
+- Manage focus for custom widgets (modals, dropdowns)
+- Trap focus in modals and dialogs
+- Return focus to trigger elements when dialogs close
+
+## Images and Media
+- Provide alt text for all images that convey information
+- Use empty alt attributes for decorative images
+- Add captions and transcripts for video content
+- Provide audio descriptions for video where necessary
+- Ensure media controls are keyboard accessible
+
+## Dynamic Content
+- Announce dynamic content changes with `aria-live`
+- Use `aria-live="polite"` for non-urgent updates
+- Use `aria-live="assertive"` for critical information
+- Use `aria-atomic` and `aria-relevant` to control announcements
+- Ensure loading states are perceivable to all users
+
+## Implementation Examples
+
+```vue
+<!-- Good Example: Accessible Modal -->
+<template>
+  <div v-if="isOpen">
+    <div 
+      class="modal-backdrop" 
+      @click="closeModal" 
+      aria-hidden="true"
+    ></div>
+    
+    <div 
+      role="dialog" 
+      aria-modal="true" 
+      aria-labelledby="modal-title"
+      class="modal"
+      ref="modalRef"
+      data-cy="confirmation-modal"
+    >
+      <h2 id="modal-title" data-cy="modal-title">Confirm Action</h2>
+      
+      <div id="modal-description">
+        Are you sure you want to proceed with this action?
+      </div>
+      
+      <div class="modal-actions">
+        <button 
+          data-cy="modal-cancel-button"
+          @click="closeModal"
+        >
+          Cancel
+        </button>
+        
+        <button 
+          data-cy="modal-confirm-button"
+          @click="confirmAction"
+          autofocus
+        >
+          Confirm
+        </button>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup lang="ts">
+import { ref, onMounted, watch } from 'vue';
+
+const props = defineProps<{
+  isOpen: boolean;
+}>();
+
+const emit = defineEmits<{
+  (e: 'close'): void;
+  (e: 'confirm'): void;
+}>();
+
+const modalRef = ref<HTMLElement | null>(null);
+const previouslyFocusedElement = ref<HTMLElement | null>(null);
+
+function closeModal() {
+  emit('close');
+}
+
+function confirmAction() {
+  emit('confirm');
+  closeModal();
+}
+
+// Focus management
+watch(() => props.isOpen, (isOpen) => {
+  if (isOpen) {
+    previouslyFocusedElement.value = document.activeElement as HTMLElement;
+    setTimeout(() => {
+      modalRef.value?.focus();
+    });
+  } else if (previouslyFocusedElement.value) {
+    previouslyFocusedElement.value.focus();
+  }
+});
+
+// Focus trap
+function trapFocus(event: KeyboardEvent) {
+  if (!props.isOpen || !modalRef.value) return;
+  
+  if (event.key === 'Escape') {
+    closeModal();
+    return;
+  }
+  
+  if (event.key !== 'Tab') return;
+  
+  const focusableElements = modalRef.value.querySelectorAll(
+    'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+  );
+  
+  const firstElement = focusableElements[0] as HTMLElement;
+  const lastElement = focusableElements[focusableElements.length - 1] as HTMLElement;
+  
+  if (event.shiftKey && document.activeElement === firstElement) {
+    lastElement.focus();
+    event.preventDefault();
+  } else if (!event.shiftKey && document.activeElement === lastElement) {
+    firstElement.focus();
+    event.preventDefault();
+  }
+}
+
+onMounted(() => {
+  document.addEventListener('keydown', trapFocus);
+});
+
+onUnmounted(() => {
+  document.removeEventListener('keydown', trapFocus);
+});
+</script>
+```

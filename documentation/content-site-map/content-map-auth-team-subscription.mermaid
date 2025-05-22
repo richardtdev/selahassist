@@ -1,0 +1,39 @@
+graph TD
+    Auth[User Management & Authentication] --> Auth1[Registration & Login]
+    Auth --> Auth2[User Profiles]
+    Auth1 --> Auth1a[Email Verification]
+    Auth1 --> Auth1b[2FA]
+    Auth1 --> Auth1c[Password Reset]
+    Auth1 --> Auth1d[Role-based Access]
+
+    TeamMgmt[Team Management] --> Team1[Team Creation]
+    TeamMgmt --> Team2[Team Dashboard]
+    TeamMgmt --> Team3[Team Settings]
+    TeamMgmt --> Team4[Member Management]
+    Team3 --> Team3a[Team Profile]
+    Team3 --> Team3b[Team Branding]
+    Team4 --> Team4a[Invite Members]
+    Team4 --> Team4b[Manage Roles]
+    Team4 --> Team4c[Team Permissions]
+
+    SubMgmt[Subscription Management] --> Sub1[Pricing Tiers]
+    SubMgmt --> Sub2[Payment Processing]
+    SubMgmt --> Sub3[User Plan Management]
+    Sub1 --> Sub1a[Standard Plan $20/month]
+    Sub1 --> Sub1b[Premium Plan $30/month]
+    Sub1 --> Sub1c[14-day Free Trial]
+    Sub2 --> Sub2a[Stripe Integration]
+    Sub3 --> Sub3a[Plan Upgrade/Downgrade]
+    Sub3 --> Sub3b[Billing History]
+
+    classDef mvp fill:#d4f1f9,stroke:#0b5394,stroke-width:2px
+    classDef postMVP fill:#ffe6cc,stroke:#bf9000,stroke-width:2px
+    classDef new fill:#d5e8d4,stroke:#82b366,stroke-width:2px
+    
+    %% MVP Features
+    class Auth,Auth1,Auth2,Auth1a,Auth1b,Auth1c,Auth1d mvp
+    class TeamMgmt,Team1,Team2,Team3,Team4,Team3a,Team4a,Team4b new
+    class SubMgmt,Sub1,Sub2,Sub3,Sub1a,Sub1c,Sub2a,Sub3b mvp
+    
+    %% Post-MVP Features
+    class Sub1b,Sub3a,Team3b,Team4c postMVP

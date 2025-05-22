@@ -1,0 +1,45 @@
+graph TD
+    Resources[Resource Library] --> Res1[Sermon Archives]
+    Resources --> Res2[Small Group Materials]
+    Res2 --> Res2a[Discussion Questions]
+    Res2 --> Res2b[Study Guides]
+
+    Chat[AI Chat Interface] --> Chat1[Conversational Interface]
+    Chat --> Chat2[Sermon Development]
+    Chat1 --> Chat1a[Natural Language]
+    Chat1 --> Chat1b[Theological Research]
+    Chat2 --> Chat2a[Content Refinement]
+
+    Integrations[External Integrations] --> Int1[Bible APIs]
+    Integrations --> Int2[News Monitoring]
+    Integrations --> Int3[RAG System]
+    Int1 --> Int1a[Bible Indexing System]
+    Int1 --> Int1b[BibleGateway]
+    Int2 --> Int2a[News Monitoring System]
+    Int3 --> Int3a[Chatbot Functionality]
+    Int3 --> Int3b[Theological Accuracy]
+
+    Backend[Backend Infrastructure] --> Back1[Laravel Application]
+    Backend --> Back2[Database Design]
+    Backend --> Back3[API Architecture]
+    Backend --> Back4[Technical Features]
+    Back1 --> Back1a[Inertia.js + Vue 3]
+    Back1 --> Back1b[TypeScript]
+    Back1 --> Back1c[Tailwind CSS]
+    Back2 --> Back2a[PostgreSQL]
+    Back2 --> Back2b[Redis]
+    Back4 --> Back4a[Performance Optimization]
+    Back4 --> Back4b[Security Measures]
+    Back4 --> Back4c[Scaling Strategy]
+
+    classDef mvp fill:#d4f1f9,stroke:#0b5394,stroke-width:2px
+    classDef postMVP fill:#ffe6cc,stroke:#bf9000,stroke-width:2px
+    
+    %% MVP Features
+    class Integrations,Int1,Int2,Int1a,Int2a mvp
+    class Backend,Back1,Back2,Back3,Back4,Back1a,Back1b,Back1c,Back2a,Back2b,Back4a,Back4b,Back4c mvp
+    
+    %% Post-MVP Features
+    class Resources,Res1,Res2,Res2a,Res2b postMVP
+    class Chat,Chat1,Chat2,Chat1a,Chat1b,Chat2a postMVP
+    class Int1b,Int3,Int3a,Int3b postMVP
