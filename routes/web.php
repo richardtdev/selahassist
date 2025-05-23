@@ -3,6 +3,7 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use Laravel\Cashier\Http\Controllers\WebhookController; // Import Cashier's WebhookController
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -22,3 +23,6 @@ Route::middleware([
         return Inertia::render('Dashboard');
     })->name('dashboard');
 });
+
+// Stripe Webhook Route
+Route::post('/stripe/webhook', [WebhookController::class, 'handleWebhook'])->name('cashier.webhook');

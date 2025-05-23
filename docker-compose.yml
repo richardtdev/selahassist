@@ -1,0 +1,59 @@
+version: '3.8'
+
+services:
+  # Laravel Application
+  app:
+    build:
+      context: ./
+      dockerfile: Dockerfile # Assuming a Dockerfile exists or will be created
+    image: sermonassist-app
+    container_name: sermonassist-app
+    restart: unless-stopped
+    working_dir: /var/www/html
+    volumes:
+      - ./:/var/www/html
+    ports:
+      - "8000:8000" # Expose port 8000 for the Laravel app
+    depends_on:
+      - postgres
+      - redis
+    environment:
+      DB_CONNECTION: pgsql
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_DATABASE: sermon_assist
+      DB_USERNAME: user
+      DB_PASSWORD: password
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      # Add other Laravel .env variables here or ensure they are in .env
+
+  # PostgreSQL Database with pgvector
+  postgres:
+    image: ankane/pgvector:latest
+    container_name: sermonassist-postgres
+    restart: unless-stopped
+    ports:
+      - "5432:5432" # Expose port 5432 for PostgreSQL
+    environment:
+      POSTGRES_DB: sermon_assist
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    volumes:
+      - pgdata:/var/lib/postgresql/data # Persist PostgreSQL data
+
+  # Redis
+  redis:
+    image: redis:alpine
+    container_name: sermonassist-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379" # Expose port 6379 for Redis
+    volumes:
+      - redisdata:/data # Persist Redis data
+
+volumes:
+  pgdata:
+    driver: local
+  redisdata:
+    driver: local

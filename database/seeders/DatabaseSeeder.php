@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
+            PlanSeeder::class, // Added the new PlanSeeder
             PlansTableSeeder::class,
             UsersTableSeeder::class,
             SermonTemplatesSeeder::class,
