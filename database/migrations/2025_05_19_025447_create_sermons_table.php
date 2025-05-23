@@ -17,6 +17,8 @@ return new class extends Migration
         // Make sure we're using the correct schema
         $schema = config('database.connections.pgsql.schema', 'public');
         DB::statement("SET search_path TO {$schema}, public");
+
+        DB::statement('CREATE EXTENSION IF NOT EXISTS vector;');
         
         Schema::create('sermons', function (Blueprint $table) {
             $table->id();
@@ -26,10 +28,22 @@ return new class extends Migration
             $table->string('title');
             $table->text('scripture_reference')->nullable();
             $table->json('content');
+            $table->string('audio_path')->nullable();
+            $table->string('video_path')->nullable();
+            $table->string('speaker')->nullable();
+            $table->string('series')->nullable();
+            $table->addColumn('vector', 'embedding', ['dimensions' => 1536])->nullable();
             $table->boolean('is_draft')->default(true);
             $table->timestamp('scheduled_date')->nullable();
             $table->timestamps();
+
+            $table->index('title');
+            $table->index('scheduled_date');
+            $table->index('speaker');
+            $table->index('series');
         });
+
+        DB::statement('CREATE INDEX IF NOT EXISTS sermons_embedding_hnsw_idx ON sermons USING hnsw (embedding vector_l2_ops);');
     }
 
     /**
@@ -42,7 +56,8 @@ return new class extends Migration
         // Make sure we're using the correct schema
         $schema = config('database.connections.pgsql.schema', 'public');
         DB::statement("SET search_path TO {$schema}, public");
-        
+
+        DB::statement('DROP INDEX IF EXISTS sermons_embedding_hnsw_idx;');
         Schema::dropIfExists('sermons');
     }
 };
