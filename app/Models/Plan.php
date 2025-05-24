@@ -12,7 +12,7 @@ class Plan extends Model
     /**
      * The attributes that are mass assignable.
      *
-     * @var array
+     * @var array<int, string>
      */
     protected $fillable = [
         'name',
@@ -27,20 +27,12 @@ class Plan extends Model
     /**
      * The attributes that should be cast.
      *
-     * @var array
+     * @var array<string, string>
      */
     protected $casts = [
-        'price' => 'decimal:2',
-        'trial_days' => 'integer',
-        'features' => 'array',
-        'active' => 'boolean',
+        'features' => 'json',
+        'active' => 'boolean', // Retaining this good practice from existing file
+        'price' => 'decimal:2', // Retaining this good practice
+        'trial_days' => 'integer', // Retaining this good practice
     ];
-
-    /**
-     * Get all subscriptions for the plan.
-     */
-    public function subscriptions()
-    {
-        return $this->hasMany(Subscription::class);
-    }
 }
