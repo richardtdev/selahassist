@@ -40,11 +40,11 @@ For a task like "Implement user authentication UI" (T1):
 
 | Task ID | Task Description                              | Responsible Developer | Priority | Status      |
 |---------|-----------------------------------------------|-----------------------|----------|-------------|
-| T1      | Implement user authentication UI              | FE1                   | High     | Not Started |
-| T2      | Develop sermon workspace UI                   | FE2                   | High     | Not Started |
-| T3      | Create pastor dashboard UI                    | FE1                   | Medium   | Not Started |
-| T4      | Set up Jetstream teams authentication         | BE1                   | High     | Not Started |
-| T5      | Implement sermon creation API                 | BE2                   | High     | Not Started |
+| T1      | Implement user authentication UI              | FE1                   | High     | DONE        |
+| T2      | Develop sermon workspace UI                   | FE2                   | High     | In Review   |
+| T3      | Create pastor dashboard UI                    | FE1                   | Medium   | In Review   |
+| T4      | Set up Jetstream teams authentication         | BE1                   | High     | DONE        |
+| T5      | Implement sermon creation API                 | BE2                   | High     | In Review   |
 | T6      | Integrate Bible Indexing System API           | BE2                   | Medium   | Not Started |
 | T7      | Implement subscription management             | BE2                   | Medium   | Not Started |
 | T8      | Set up database schema and migrations         | BE1                   | High     | Not Started |
@@ -53,9 +53,9 @@ For a task like "Implement user authentication UI" (T1):
 
 ### Task Prompts
 
-**T1: Implement user authentication UI**
+**T1: Review the Implement user authentication UI as created by Jetsream**
 - **Responsible**: FE1
-- **Prompt**: Before starting, create a child task list for this task, detailing subtasks such as designing the login component, implementing routing, and ensuring accessibility. Save it as `ts-docs/TASK-T1-child-tasks.md` in the project repository, following the example format above. Then, using the `documentation/content-site-map` and `SaaS-TDD.md` in `documents/PlanningDocs`, create Vue 3 components for the SermonAssist authentication UI (login, registration, password reset) with Inertia.js and Tailwind CSS. Ensure the UI aligns with the navigation flow in `content-site-map` and integrates with the Jetstream teams authentication endpoints described in `Teams-implementation.md`. Follow WCAG 2.1 AA accessibility standards as outlined in `documents/developmentGuidelines/AI Development Guidelines for Additional Cursor Rules`. Consult with BE1 for endpoint details.
+- **Prompt**: Before starting, create a child task list for this task, detailing subtasks such as designing the login component, implementing routing, and ensuring accessibility. Save it as `ts-docs/TASK-T1-child-tasks.md` in the project repository, following the example format above. Then, using the `documentation/content-site-map` and `SaaS-TDD.md` in `documents/PlanningDocs`, create Vue 3 components as needed for the SermonAssist authentication UI (login, registration, password reset) with Inertia.js and Tailwind CSS. Ensure the UI aligns with the navigation flow in `content-site-map` and integrates with the Jetstream teams authentication endpoints described in `Teams-implementation.md`. Follow WCAG 2.1 AA accessibility standards as outlined in `documents/developmentGuidelines/AI Development Guidelines for Additional Cursor Rules`. Consult with BE1 for endpoint details.
 
 **T2: Develop sermon workspace UI**
 - **Responsible**: FE2
@@ -69,7 +69,7 @@ For a task like "Implement user authentication UI" (T1):
 - **Responsible**: BE1
 - **Prompt**: Before starting, create a child task list for this task, detailing subtasks such as installing Jetstream, configuring team models, and setting up user invitations. Save it as `ts-docs/TASK-T4-child-tasks.md` in the project repository, following the example format above. Then, using `Teams-implementation.md` and `SaaS-TDD.md` in `documents/PlanningDocs`, configure Laravel Jetstream with teams functionality for SermonAssist. Implement team-based authentication, including user invitations and role management, as specified in `Teams-implementation.md`. Ensure the database schema supports teams as outlined in `SaaS-TDD.md` and adheres to PSR-12 standards from `documents/developmentGuidelines`. Consult with BE2 for integration with subscription management.
 
-**T5: Implement sermon creation API**
+**T5: Implement sermon creation API (Inertia with Routes)**
 - **Responsible**: BE2
 - **Prompt**: Before starting, create a child task list for this task, detailing subtasks such as defining the API route, implementing team permissions, and integrating `pgvector`. Save it as `ts-docs/TASK-T5-child-tasks.md` in the project repository, following the example format above. Then, referencing `SaaS-TDD.md` and `saas-requirements.md` in `documents/PlanningDocs`, create a Laravel API controller for the sermon creation endpoint (`POST /api/teams/{team}/sermons`). Implement team-based permissions as per `Teams-implementation.md` and store sermon data in PostgreSQL with `pgvector` for AI features, as described in `ai-integration-plan.md`. Follow PSR-12 standards and include error handling per `documents/developmentGuidelines`. Consult with BE1 for database schema details.
 
